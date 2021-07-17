@@ -29,25 +29,21 @@ class Phone:
         self.model = model
         self.issue_year = issue_year
 
-    @classmethod
-    def receive_call(cls, name="Анатолий"):
-        cls.name = name
-        print(f"Звонит: {cls.name}")
+    def __str__(self):
+        return (f'Бренд: {self.brand}\n'
+                f'Модель: {self.model}\n'
+                f'Год выпуска: {self.issue_year}')
 
     def get_info(self):
-        print(self.brand, self.model, self.issue_year)
+        return self.brand, self.model, self.issue_year
 
-    def __str__(self):
-        return f"<Бренд: {self.brand}, Модель: {self.model}, Год выпуска: {self.issue_year}>"
+    @staticmethod
+    def receive_call(name: str):
+        print(f'Звонит {name}')
 
 
-mob_phones = Phone
+mob_phone = Phone('iFruit', '5', 2013)
 
-mob_phones = [
-    ['iFruit', '10', 2019],
-    ['Xiaix', 'dmi7', 2018],
-    ['Gnusmas', 'a12', 2020]
-]
-
-print(mob_phones)
-Phone.receive_call()
+print(mob_phone)
+mob_phone.receive_call('Майк')
+print(mob_phone.get_info())
